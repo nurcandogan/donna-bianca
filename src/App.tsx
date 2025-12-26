@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react" // İkonları sonra ekleyeceğiz ama şimdilik dursun
 
+
+
 export default function App() {
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center bg-slate-50">
@@ -21,7 +23,7 @@ export default function App() {
           <Button variant="outline" size="lg">
             Randevu Al
           </Button>
-        </div>
+        </div>12
       </div>
     </div>
   )
