@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,18 +47,21 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
               <motion.div key={item.href} whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400 }}>
-                <Link
+                <a
                   href={item.href}
                   className="text-sm font-medium text-white hover:text-accent transition-colors drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
                   style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.8)" }}
                 >
                   {item.label}
-                </Link>
+                </a>
               </motion.div>
             ))}
-            <Button className="bg-accent text-white hover:bg-accent/90 shadow-lg" asChild>
-              <a href="#contact">Randevu Al</a>
-            </Button>
+            <a
+              href="#contact"
+              className="bg-accent text-white hover:bg-accent/90 shadow-lg px-6 py-2 rounded-md transition-colors font-medium"
+            >
+              Randevu Al
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,20 +86,22 @@ export function Navbar() {
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
               {menuItems.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
                   className="text-white hover:text-accent transition-colors py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
-                </Link>
-              ))}
-              <Button className="bg-accent text-white hover:bg-accent/90 w-full" asChild>
-                <a href="#contact" onClick={() => setIsOpen(false)}>
-                  Randevu Al
                 </a>
-              </Button>
+              ))}
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="bg-accent text-white hover:bg-accent/90 w-full px-6 py-2 rounded-md transition-colors font-medium text-center"
+              >
+                Randevu Al
+              </a>
             </div>
           </motion.div>
         )}

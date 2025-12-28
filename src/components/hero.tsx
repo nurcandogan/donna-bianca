@@ -1,21 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
-import Image from "next/image"
 
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/luxury-bridal-boutique-interior.jpg"
+        <img
+          src="/src/public/2.png"
           alt="Luxury Bridal Boutique"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background/95" />
       </div>
@@ -54,21 +49,18 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-lg shadow-xl"
-              asChild
+            <a
+              href="/koleksiyonlar"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 text-lg shadow-xl rounded-md font-medium transition-colors"
             >
-              <a href="/koleksiyonlar">Koleksiyonları İncele</a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="px-8 py-6 text-lg border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 shadow-xl"
-              asChild
+              Koleksiyonları İncele
+            </a>
+            <a
+              href="#contact"
+              className="px-8 py-4 text-lg border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 shadow-xl rounded-md font-medium transition-colors"
             >
-              <a href="#contact">Randevu Al</a>
-            </Button>
+              Randevu Al
+            </a>
           </motion.div>
         </motion.div>
 

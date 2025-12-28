@@ -1,5 +1,3 @@
-
-
 "use client"
 
 import type React from "react"
@@ -7,9 +5,6 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 export function Contact() {
@@ -101,7 +96,11 @@ export function Contact() {
             </div>
 
             <div className="aspect-video rounded-sm overflow-hidden">
-              <img src="/elegant-bridal-shop-storefront-luxury-boutique.jpg" alt="Donna Bianca Mağaza" className="w-full h-full object-cover" />
+              <img
+                src="/src/public/1.png"
+                alt="Donna Bianca Mağaza"
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
 
@@ -116,14 +115,14 @@ export function Contact() {
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Ad Soyad
                 </label>
-                <Input
+                <input
                   id="name"
                   type="text"
                   placeholder="Adınız ve soyadınız"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="w-full"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                 />
               </div>
 
@@ -131,14 +130,14 @@ export function Contact() {
                 <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                   E-posta
                 </label>
-                <Input
+                <input
                   id="email"
                   type="email"
                   placeholder="ornek@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
-                  className="w-full"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                 />
               </div>
 
@@ -146,14 +145,14 @@ export function Contact() {
                 <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                   Telefon
                 </label>
-                <Input
+                <input
                   id="phone"
                   type="tel"
                   placeholder="+90 (5__) ___ __ __"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
-                  className="w-full"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                 />
               </div>
 
@@ -161,19 +160,23 @@ export function Contact() {
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                   Mesajınız
                 </label>
-                <Textarea
+                <textarea
                   id="message"
                   placeholder="Randevu tercihiniz ve özel istekleriniz..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
-                  className="w-full min-h-[150px]"
+                  rows={6}
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+              <button
+                type="submit"
+                className="w-full px-6 py-3 rounded-md bg-accent text-white font-medium hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all"
+              >
                 Randevu Talebi Gönder
-              </Button>
+              </button>
             </form>
           </motion.div>
         </div>
