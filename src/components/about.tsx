@@ -28,7 +28,7 @@ export function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="about" className="py-24 lg:py-32 bg-muted/30">
+    <section id="about" className="py-24 lg:py-32 bg-[#F5F1EB]">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
@@ -48,7 +48,7 @@ export function About() {
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <p className="font-playfair text-4xl font-bold">15+</p>
+              <p className="font-display text-2xl font-semibold">15+</p>
               <p className="text-sm">Yıllık Deneyim</p>
             </motion.div>
           </motion.div>
@@ -59,14 +59,14 @@ export function About() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-balance tracking-tight">
               Donna Bianca Hikayesi
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed">
               2008 yılından bu yana, binlerce gelinin hayallerini gerçeğe dönüştürüyoruz. Donna Bianca olarak, her
               gelinin özel gününde kendini prenses gibi hissetmesini sağlamak için tutkuyla çalışıyoruz.
             </p>
-            <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
+            <p className="text-sm md:text-base text-muted-foreground mb-8 leading-relaxed">
               Geleneksel el işçiliğini modern tasarımla birleştirerek, size özel ve unutulmaz gelinlikler yaratıyoruz.
             </p>
 
@@ -79,7 +79,7 @@ export function About() {
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                   className="flex gap-4"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                     <feature.icon className="text-accent" size={24} />
                   </div>
                   <div>

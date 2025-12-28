@@ -23,7 +23,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.h1
-            className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 text-balance drop-shadow-lg"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 text-balance drop-shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -51,9 +51,19 @@ export function Hero() {
           >
             <a
               href="/koleksiyonlar"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 text-lg shadow-xl rounded-md font-medium transition-colors"
+              className="bg-accent text-white hover:bg-accent/90 px-8 py-4 text-lg shadow-xl rounded-md font-medium transition-colors flex items-center gap-2"
             >
               Koleksiyonları İncele
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{
+                  repeat: Number.POSITIVE_INFINITY,
+                  duration: 1.5,
+                  ease: "easeInOut",
+                }}
+              >
+                <ChevronDown className="text-white drop-shadow-lg" size={24} />
+              </motion.div>
             </a>
             <a
               href="#contact"
@@ -64,18 +74,6 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{
-            opacity: { delay: 1.2, duration: 0.5 },
-            y: { repeat: Number.POSITIVE_INFINITY, duration: 2, ease: "easeInOut" },
-          }}
-        >
-          <ChevronDown className="text-white/70 drop-shadow-lg" size={32} />
-        </motion.div>
       </div>
     </section>
   )

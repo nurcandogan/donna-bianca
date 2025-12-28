@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import { useNavigate, useLocation } from "react-router-dom"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +19,23 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    // Hash değiştiğinde scroll yap
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+      }, 100)
+    }
+  }, [location])
+
   const menuItems = [
     { label: "Ana Sayfa", href: "/" },
     { label: "Koleksiyonlar", href: "/koleksiyonlar" },
-    { label: "Hakkımızda", href: "#about" },
-    { label: "İletişim", href: "#contact" },
+    { label: "Hakkımızda", href: "/#about" },
+    { label: "İletişim", href: "/iletisim" },
   ]
 
   return (
@@ -36,7 +51,7 @@ export function Navbar() {
           {/* Logo */}
           <motion.a
             href="/"
-            className="font-playfair text-2xl lg:text-3xl font-bold text-accent drop-shadow-lg"
+            className="font-display text-xl lg:text-2xl font-semibold text-accent drop-shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
@@ -49,6 +64,21 @@ export function Navbar() {
               <motion.div key={item.href} whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400 }}>
                 <a
                   href={item.href}
+                  onClick={(e) => {
+                    if (item.href.startsWith("/#")) {
+                      e.preventDefault()
+                      navigate("/")
+                      setTimeout(() => {
+                        const hash = item.href.split("#")[1]
+                        const element = document.getElementById(hash)
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth", block: "start" })
+                        }
+                      }, 100)
+                    } else if (!item.href.startsWith("#")) {
+                      navigate(item.href)
+                    }
+                  }}
                   className="text-sm font-medium text-white hover:text-accent transition-colors drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
                   style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.8)" }}
                 >
@@ -57,7 +87,24 @@ export function Navbar() {
               </motion.div>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                if (location.pathname !== "/") {
+                  navigate("/")
+                  setTimeout(() => {
+                    const element = document.getElementById("contact")
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth", block: "start" })
+                    }
+                  }, 100)
+                } else {
+                  const element = document.getElementById("contact")
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" })
+                  }
+                }
+              }}
               className="bg-accent text-white hover:bg-accent/90 shadow-lg px-6 py-2 rounded-md transition-colors font-medium"
             >
               Randevu Al
@@ -89,15 +136,47 @@ export function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => {
+                    setIsOpen(false)
+                    if (item.href.startsWith("/#")) {
+                      e.preventDefault()
+                      navigate("/")
+                      setTimeout(() => {
+                        const hash = item.href.split("#")[1]
+                        const element = document.getElementById(hash)
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth", block: "start" })
+                        }
+                      }, 100)
+                    } else if (!item.href.startsWith("#")) {
+                      navigate(item.href)
+                    }
+                  }}
                   className="text-white hover:text-accent transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
               <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
+                href="/#contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setIsOpen(false)
+                  if (location.pathname !== "/") {
+                    navigate("/")
+                    setTimeout(() => {
+                      const element = document.getElementById("contact")
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "start" })
+                      }
+                    }, 100)
+                  } else {
+                    const element = document.getElementById("contact")
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth", block: "start" })
+                    }
+                  }
+                }}
                 className="bg-accent text-white hover:bg-accent/90 w-full px-6 py-2 rounded-md transition-colors font-medium text-center"
               >
                 Randevu Al

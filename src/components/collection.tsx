@@ -8,17 +8,17 @@ const collections = [
   {
     title: "Klasik Koleksiyon",
     description: "Zamansız zarafet ve geleneksel güzellik",
-    image: "/classic-elegant-white-wedding-dress-with-lace.jpg",
+    image: "/4.jpg",
   },
   {
     title: "Modern Koleksiyon",
     description: "Çağdaş tasarım ve minimalist şıklık",
-    image: "/modern-minimalist-wedding-dress-sleek-design.jpg",
+    image: "/5.jpg",
   },
   {
     title: "Prenses Koleksiyon",
     description: "Görkemli ve büyüleyici tasarımlar",
-    image: "/princess-ball-gown-wedding-dress-luxurious.jpg",
+    image: "/14.jpg",
   },
 ]
 
@@ -27,12 +27,13 @@ function CollectionCard({ collection, index }: { collection: (typeof collections
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <motion.div
+    <motion.a
+      href="/koleksiyonlar"
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="group relative overflow-hidden rounded-sm"
+      className="group relative overflow-hidden rounded-sm block"
     >
       <div className="aspect-[3/4] overflow-hidden">
         <motion.img
@@ -48,10 +49,10 @@ function CollectionCard({ collection, index }: { collection: (typeof collections
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
       >
-        <h3 className="font-playfair text-2xl font-bold text-primary-foreground mb-2">{collection.title}</h3>
+        <h3 className="font-display text-lg font-semibold text-primary-foreground mb-1">{collection.title}</h3>
         <p className="text-primary-foreground/90 text-sm">{collection.description}</p>
       </motion.div>
-    </motion.div>
+    </motion.a>
   )
 }
 
@@ -69,10 +70,10 @@ export function Collections() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 text-balance">
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-3 text-balance tracking-tight">
             Koleksiyonlarımız
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Her tarz ve zevke uygun özenle seçilmiş gelinlik koleksiyonlarımızı keşfedin
           </p>
         </motion.div>

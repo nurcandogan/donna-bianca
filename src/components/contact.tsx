@@ -47,7 +47,7 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-24 lg:py-32">
+    <section id="contact" className="py-24 lg:py-32 bg-[#F5F1EB]">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           ref={ref}
@@ -56,60 +56,38 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 text-balance">
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-3 text-balance tracking-tight">
             Bizimle İletişime Geçin
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Hayalinizdeki gelinliği birlikte bulalım. Randevu almak için formu doldurun.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="font-playfair text-2xl font-bold text-foreground mb-6">İletişim Bilgileri</h3>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex gap-4"
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                      <info.icon className="text-accent" size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
-                      <p className="text-muted-foreground">{info.content}</p>
-                    </div>
-                  </motion.div>
-                ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="aspect-[4/5] rounded-sm overflow-hidden">
+                <img
+                  src="/src/public/1.png"
+                  alt="Donna Bianca Mağaza"
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </div>
+            </motion.div>
 
-            <div className="aspect-video rounded-sm overflow-hidden">
-              <img
-                src="/src/public/1.png"
-                alt="Donna Bianca Mağaza"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8 }}
-          >
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.8 }}
+            >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -179,6 +157,7 @@ export function Contact() {
               </button>
             </form>
           </motion.div>
+          </div>
         </div>
       </div>
     </section>

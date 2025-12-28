@@ -16,7 +16,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="font-playfair text-2xl font-bold mb-4">Donna Bianca</h3>
+            <h3 className="font-display text-lg font-semibold mb-3">Donna Bianca</h3>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               Hayalinizdeki gelinliği bulmanız için buradayız. Her detayda mükemmellik.
             </p>
