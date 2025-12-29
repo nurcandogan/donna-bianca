@@ -1,11 +1,8 @@
-"use client"
 
 import type React from "react"
-
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 export function Contact() {
   const ref = useRef(null)
@@ -23,28 +20,6 @@ export function Contact() {
     // Form submission logic here
   }
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Adres",
-      content: "Nişantaşı, İstanbul",
-    },
-    {
-      icon: Phone,
-      title: "Telefon",
-      content: "+90 (212) 123 45 67",
-    },
-    {
-      icon: Mail,
-      title: "E-posta",
-      content: "info@donnabianca.com",
-    },
-    {
-      icon: Clock,
-      title: "Çalışma Saatleri",
-      content: "Pzt-Cmt: 10:00 - 19:00",
-    },
-  ]
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-[#F5F1EB]">

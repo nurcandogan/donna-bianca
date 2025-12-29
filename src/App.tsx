@@ -4,9 +4,9 @@ import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { CollectionsPage } from "./pages/collectionsPage"
+import { ContactPage } from "./pages/contactPage"
 import { Collections } from "./components/collection"
-import { CollectionsPage } from "./pages/Collections"
-import { ContactPage } from "./pages/Contact"
 
 function Home() {
   return (
