@@ -8,7 +8,7 @@ export function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/public/2.jpeg"
+          src="/2.jpeg"
           alt="Luxury Bridal Boutique"
           className="w-full h-full object-cover"
         />
