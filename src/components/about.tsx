@@ -40,7 +40,7 @@ export function About() {
             className="relative"
           >
             <div className="aspect-[4/5] rounded-sm overflow-hidden">
-              <img src="/src/public/3.png" alt="Donna Bianca Mağaza" className="w-full h-full object-cover" />
+              <img src="/src/public/3.jpeg" alt="Donna Bianca Mağaza" className="w-full h-full object-cover" />
             </div>
             <motion.div
               className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground p-8 rounded-sm shadow-lg"

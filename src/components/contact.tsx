@@ -50,7 +50,7 @@ export function Contact() {
             >
               <div className="aspect-[4/5] rounded-sm overflow-hidden">
                 <img
-                  src="/src/public/1.png"
+                  src="/src/public/1.jpeg"
                   alt="Donna Bianca Mağaza"
                   className="w-full h-full object-cover"
                 />
