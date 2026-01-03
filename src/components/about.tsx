@@ -27,6 +27,8 @@ export function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+
+  
   return (
     <section id="about" className="py-24 lg:py-32 bg-[#F5F1EB]">
       <div className="container mx-auto px-4 lg:px-8">
