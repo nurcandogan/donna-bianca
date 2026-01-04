@@ -55,6 +55,7 @@ function CollectionCard({ collection, index }: { collection: (typeof collections
     </motion.a>
   )
 }
+
   // Main Collections Component
 export function Collections() {
   const ref = useRef(null)
