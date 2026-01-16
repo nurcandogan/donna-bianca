@@ -3,9 +3,10 @@
 import { motion } from "framer-motion"
 import { Instagram, Facebook, Mail } from "lucide-react"
 
+// Footer Component
 export function Footer() {
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Instagram, href: "#", label: "Instagram" },  //düzelt
     { icon: Facebook, href: "#", label: "Facebook" },
     { icon: Mail, href: "#", label: "Email" },
   ]

@@ -5,7 +5,6 @@ import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
 
 
-
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -21,7 +20,6 @@ export function Contact() {
     console.log("[v0] Form submitted:", formData)
     // Form submission logic here
   }
-
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-[#F5F1EB]">
