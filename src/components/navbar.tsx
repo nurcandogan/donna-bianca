@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { useNavigate, useLocation } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,16 +20,53 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    // Hash değiştiğinde scroll yap
     if (location.hash) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         const element = document.querySelector(location.hash)
         if (element) {
           element.scrollIntoView({ behavior: "smooth", block: "start" })
         }
       }, 100)
+      return () => clearTimeout(timer)
     }
-  }, [location])
+  }, [location.pathname, location.hash])
+
+  const goHome = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else {
+      navigate("/")
+      window.scrollTo(0, 0)
+    }
+  }
+
+  const goToHash = (hash: string) => {
+    if (location.pathname === "/") {
+      const element = document.getElementById(hash)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    } else {
+      navigate(`/#${hash}`)
+    }
+  }
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+
+    if (href === "/") {
+      goHome()
+      return
+    }
+
+    if (href.startsWith("/#")) {
+      goToHash(href.split("#")[1])
+      return
+    }
+
+    navigate(href)
+    window.scrollTo(0, 0)
+  }
 
   const menuItems = [
     { label: "Ana Sayfa", href: "/" },
@@ -48,36 +85,25 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <motion.a
-            href="/"
-            className="font-display text-xl lg:text-2xl font-semibold text-accent drop-shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400 }}
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault()
+              goHome()
+            }}
+            className="font-display text-xl lg:text-2xl font-semibold text-accent drop-shadow-lg hover:opacity-90 transition-opacity"
           >
             Donna Bianca
-          </motion.a>
+          </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
               <motion.div key={item.href} whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400 }}>
                 <a
                   href={item.href}
                   onClick={(e) => {
-                    if (item.href.startsWith("/#")) {
-                      e.preventDefault()
-                      navigate("/")
-                      setTimeout(() => {
-                        const hash = item.href.split("#")[1]
-                        const element = document.getElementById(hash)
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth", block: "start" })
-                        }
-                      }, 100)
-                    } else if (!item.href.startsWith("#")) {
-                      navigate(item.href)
-                    }
+                    e.preventDefault()
+                    handleNavClick(item.href)
                   }}
                   className="text-sm font-medium text-white hover:text-accent transition-colors drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
                   style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.8)" }}
@@ -90,20 +116,7 @@ export function Navbar() {
               href="/#contact"
               onClick={(e) => {
                 e.preventDefault()
-                if (location.pathname !== "/") {
-                  navigate("/")
-                  setTimeout(() => {
-                    const element = document.getElementById("contact")
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth", block: "start" })
-                    }
-                  }, 100)
-                } else {
-                  const element = document.getElementById("contact")
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth", block: "start" })
-                  }
-                }
+                handleNavClick("/#contact")
               }}
               className="bg-accent text-white hover:bg-accent/90 shadow-lg px-6 py-2 rounded-md transition-colors font-medium"
             >
@@ -111,7 +124,6 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-white drop-shadow-lg"
@@ -122,7 +134,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -137,20 +148,8 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => {
-                    setIsOpen(false)
-                    if (item.href.startsWith("/#")) {
-                      e.preventDefault()
-                      navigate("/")
-                      setTimeout(() => {
-                        const hash = item.href.split("#")[1]
-                        const element = document.getElementById(hash)
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth", block: "start" })
-                        }
-                      }, 100)
-                    } else if (!item.href.startsWith("#")) {
-                      navigate(item.href)
-                    }
+                    e.preventDefault()
+                    handleNavClick(item.href)
                   }}
                   className="text-white hover:text-accent transition-colors py-2"
                 >
@@ -161,21 +160,7 @@ export function Navbar() {
                 href="/#contact"
                 onClick={(e) => {
                   e.preventDefault()
-                  setIsOpen(false)
-                  if (location.pathname !== "/") {
-                    navigate("/")
-                    setTimeout(() => {
-                      const element = document.getElementById("contact")
-                      if (element) {
-                        element.scrollIntoView({ behavior: "smooth", block: "start" })
-                      }
-                    }, 100)
-                  } else {
-                    const element = document.getElementById("contact")
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth", block: "start" })
-                    }
-                  }
+                  handleNavClick("/#contact")
                 }}
                 className="bg-accent text-white hover:bg-accent/90 w-full px-6 py-2 rounded-md transition-colors font-medium text-center"
               >

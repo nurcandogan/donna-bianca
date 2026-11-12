@@ -5,6 +5,7 @@ import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { CollectionsPage } from "./pages/collectionsPage"
+import { DressDetailPage } from "./pages/dressDetailPage"
 import { ContactPage } from "./pages/contactPage"
 import { Collections } from "./components/collection"
 
@@ -27,6 +28,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/koleksiyonlar" element={<CollectionsPage />} />
+        <Route path="/koleksiyonlar/:id" element={<DressDetailPage />} />
         <Route path="/iletisim" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>

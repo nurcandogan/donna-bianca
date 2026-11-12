@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import { Link } from "react-router-dom"
 
 const collections = [
   {
@@ -27,32 +28,35 @@ function CollectionCard({ collection, index }: { collection: (typeof collections
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <motion.a
-      href="/koleksiyonlar"
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="group relative overflow-hidden rounded-sm block"
-    >
-      <div className="aspect-[3/4] overflow-hidden">
-        <motion.img
-          src={collection.image}
-          alt={collection.title}
-          className="w-full h-full object-cover"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.6 }}
-        />
-      </div>
+    <Link to="/koleksiyonlar" className="block">
       <motion.div
-        className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.6, delay: index * 0.2 }}
+        className="group relative overflow-hidden rounded-sm"
       >
-        <h3 className="font-display text-lg font-semibold text-primary-foreground mb-1">{collection.title}</h3>
-        <p className="text-primary-foreground/90 text-sm">{collection.description}</p>
+        <div className="aspect-[3/4] overflow-hidden">
+          <motion.img
+            src={collection.image}
+            alt={collection.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.6 }}
+          />
+        </div>
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+        >
+          <h3 className="font-display text-lg font-semibold text-primary-foreground mb-1">{collection.title}</h3>
+          <p className="text-primary-foreground/90 text-sm">{collection.description}</p>
+        </motion.div>
       </motion.div>
-    </motion.a>
+    </Link>
   )
 }
 

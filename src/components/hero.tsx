@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export function Hero() {
   return (
@@ -49,8 +50,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <a
-              href="/koleksiyonlar"
+            <Link
+              to="/koleksiyonlar"
               className="bg-accent text-white hover:bg-accent/90 px-8 py-4 text-lg shadow-xl rounded-md font-medium transition-colors flex items-center gap-2"
             >
               Koleksiyonları İncele
@@ -64,7 +65,7 @@ export function Hero() {
               >
                 <ChevronDown className="text-white drop-shadow-lg" size={24} />
               </motion.div>
-            </a>
+            </Link>
             <a
               href="#contact"
               className="px-8 py-4 text-lg border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 shadow-xl rounded-md font-medium transition-colors"
